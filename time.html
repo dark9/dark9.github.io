@@ -5,9 +5,19 @@
       var now = new Date();
       var hh = now.getHours();
       var mm = now.getMinutes();
+      var dd = now.getDate();
+      var mon = now.getMonth()+1;
+      var ww = now.getDay();
+      var tz = now.getTimezoneOffset()/60;
+      
       hh = check(hh);
       mm = check(mm);
+      dd = check(dd);
+      
       document.getElementById("clock").innerHTML = hh + ":" + mm;
+      document.getElementById("date").innerHTML = mon + "月" + dd + "日";
+      document.getElementById("week").innerHTML = "星期" + '日一二三四五六'.charAt(ww);
+      document.getElementById("timezone").innerHTML = "时区 " + tz;
   }
 
   function check(a) 
@@ -20,8 +30,10 @@
 
   window.onload = function() 
   {
-    setInterval(display_time, 500);
+    setInterval(display_time, 60000);
   }
+    
+  display_time();
   </script>
   
   <body>
@@ -37,6 +49,9 @@
     </div>
     <div style="text-align:center;font-size:300%;font-family: 'ヒラギノ明朝 ProN W6', 'HiraMinProN-W6', 'HG明朝E', 'ＭＳ Ｐ明朝', 'MS PMincho', 'MS 明朝', serif;" id="week">
       星期四
+    </div>
+    <div style="text-align:center;font-size:300%;font-family: 'ヒラギノ明朝 ProN W6', 'HiraMinProN-W6', 'HG明朝E', 'ＭＳ Ｐ明朝', 'MS PMincho', 'MS 明朝', serif;" id="week">
+      时区
     </div>
   </body>
 </html>
