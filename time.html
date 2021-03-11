@@ -13,27 +13,18 @@
     <div style="text-align:center;font-size:300%;font-family: 'ヒラギノ明朝 ProN W6', 'HiraMinProN-W6', 'HG明朝E', 'ＭＳ Ｐ明朝', 'MS PMincho', 'MS 明朝', serif;" id="week">
       星期四
     </div>
-    <div style="text-align:center;font-size:300%;font-family: 'ヒラギノ明朝 ProN W6', 'HiraMinProN-W6', 'HG明朝E', 'ＭＳ Ｐ明朝', 'MS PMincho', 'MS 明朝', serif;" id="iso">
-      9999
-    </div>
   </body>
   <script>
     function display_time() 
     {
       now = new Date();
-      
-      // default kindle timezone = tokyo, 24*60*60*1000*9
-      now.setTime(now.getTime()+777600000);
             
-      /*
       if(!now.getTimezoneOffset())
       {
-        now = new Date(now.getTime()+777600000);
+        // default kindle timezone = tokyo, 60*60*1000*9
+        now.setTime(now.getTime()+32400000);
       }
-      */
-      
-      isoStr = now.toISOString();
-      
+            
       hh = now.getHours();
       mm = now.getMinutes();
       dd = now.getDate();
@@ -47,7 +38,6 @@
       document.getElementById("clock").innerHTML = hh + ":" + mm;
       document.getElementById("date").innerHTML = mon + "月" + dd + "日";
       document.getElementById("week").innerHTML = "星期" + '日一二三四五六'.charAt(ww);
-      document.getElementById("iso").innerHTML = isoStr;
   }
 
   function check(a) 
