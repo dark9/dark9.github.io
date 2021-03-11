@@ -13,20 +13,23 @@
     <div style="text-align:center;font-size:300%;font-family: 'ヒラギノ明朝 ProN W6', 'HiraMinProN-W6', 'HG明朝E', 'ＭＳ Ｐ明朝', 'MS PMincho', 'MS 明朝', serif;" id="week">
       星期四
     </div>
-    <div style="text-align:center;font-size:300%;font-family: 'ヒラギノ明朝 ProN W6', 'HiraMinProN-W6', 'HG明朝E', 'ＭＳ Ｐ明朝', 'MS PMincho', 'MS 明朝', serif;" id="timezone">
-      时区
-    </div>
   </body>
   <script>
     function display_time() 
     {
-      var now = new Date();
-      var hh = now.getHours();
-      var mm = now.getMinutes();
-      var dd = now.getDate();
-      var mon = now.getMonth()+1;
-      var ww = now.getDay();
-      var tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+      now = new Date();
+      
+      if(!now.getTimezoneOffset())
+      {
+        // 24*60*60*1000*9
+        now = new Date(now.getTime()+777600000);
+      }
+      
+      hh = now.getHours();
+      mm = now.getMinutes();
+      dd = now.getDate();
+      mon = now.getMonth()+1;
+      ww = now.getDay();
       
       hh = check(hh);
       mm = check(mm);
@@ -35,7 +38,6 @@
       document.getElementById("clock").innerHTML = hh + ":" + mm;
       document.getElementById("date").innerHTML = mon + "月" + dd + "日";
       document.getElementById("week").innerHTML = "星期" + '日一二三四五六'.charAt(ww);
-      document.getElementById("timezone").innerHTML = "时区 " + tz;
   }
 
   function check(a) 
