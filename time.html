@@ -21,16 +21,14 @@
     function display_time() 
     {
       now = new Date();
-      
-      isoStr = now.toISOString();
-      
-      /*
+            
       if(!now.getTimezoneOffset())
       {
-        // default kindle timezone = tokyo, 24*60*60*9
-        now.setTime(now.getTime()+777600);
+        // default kindle timezone = tokyo, 24*60*60*1000*9
+        now = new Date(now.getTime()+777600000);
       }
-      */
+      
+      isoStr = now.toISOString();
       
       hh = now.getHours();
       mm = now.getMinutes();
