@@ -1,4 +1,45 @@
 <html>
+  <style>
+    #clock 
+    {
+      color: white;
+      background: black;
+      display: inline-block;
+      margin: 10px;
+      padding: 10px;
+      font: 2em consolas, monospace;
+      border: solid gray 5px;
+      border-radius: 15px;
+    }
+  </style>
+  
+  <script>
+    function display_time() 
+    {
+      var now = new Date();
+      var hh = now.getHours();
+      var mm = now.getMinutes();
+      var ss = now.getSeconds();
+      hh = check(hh);
+      mm = check(mm);
+      ss = check(ss);
+      document.getElementById("clock").innerHTML = hh + ":" + mm + ":" + ss;
+  }
+
+  function check(a) 
+  {
+    if (a < 10) 
+      return "0"+ a;
+    else
+      return a;
+  }
+
+  window.onload = function() 
+  {
+    setInterval(display_time, 500);
+  }
+  </script>
+  
   <body>
     <div id="clock">
       00:00:00
